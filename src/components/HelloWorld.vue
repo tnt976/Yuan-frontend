@@ -6,7 +6,7 @@
   </div>
 </template>
 
-<script setup lang= "ts">
+<script setup lang='ts'>
   import { ref, reactive } from 'vue'
   import { ElMessage } from 'element-plus'
 
