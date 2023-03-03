@@ -1,52 +1,27 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
-
-const count = ref(0)
-</script>
-
 <template>
-  <h1>{{ msg }}</h1>
-
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>See <code>README.md</code> for more information.</p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
-  </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <div>
+    <v-form-render :form-json="formJson" :form-data="formData" :option-data="optionData" ref="vFormRef">
+    </v-form-render>
+    <el-button type="primary" @click="submitForm">Submit</el-button>
+  </div>
 </template>
 
-<style scoped>
-a {
-  color: #42b983;
-}
+<script setup>
+  import { ref, reactive } from 'vue'
+  import { ElMessage } from 'element-plus'
 
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
-}
+  const formJson = reactive({"widgetList":[{"key":72165,"type":"input","icon":"text-field","formItemFlag":true,"options":{"name":"input32654","label":"input","labelAlign":"","type":"text","defaultValue":"","placeholder":"","columnWidth":"200px","size":"","labelWidth":null,"labelHidden":false,"readonly":false,"disabled":false,"hidden":false,"clearable":true,"showPassword":false,"required":false,"requiredHint":"dqweqwe","validation":"","validationHint":"","customClass":[],"labelIconClass":null,"labelIconPosition":"rear","labelTooltip":null,"minLength":null,"maxLength":null,"showWordLimit":false,"prefixIcon":"","suffixIcon":"","appendButton":false,"appendButtonDisabled":false,"buttonIcon":"custom-search","onCreated":"","onMounted":"","onInput":"","onChange":"","onFocus":"","onBlur":"","onValidate":"","onAppendButtonClick":""},"id":"input32654"}],"formConfig":{"modelName":"formData","refName":"vForm","rulesName":"rules","labelWidth":80,"labelPosition":"top","size":"large","labelAlign":"label-left-align","cssCode":"","customClass":[],"functions":"","layoutType":"PC","jsonVersion":3,"onFormCreated":"","onFormMounted":"","onFormDataChange":""}})
+  const formData = reactive({})
+  const optionData = reactive({})
+  const vFormRef = ref(null)
 
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
-}
-</style>
+  const submitForm = () => {
+    vFormRef.value.getFormData().then(formData => {
+      // Form Validation OK
+      alert( JSON.stringify(formData) )
+    }).catch(error => {
+      // Form Validation failed
+      ElMessage.error(error)
+    })
+  }
+</script>

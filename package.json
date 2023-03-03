@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.25"
+    "element-plus": "^2.2.32",
+    "vform3-builds": "^3.0.10",
+    "vue": "^3.2.25",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.3",
