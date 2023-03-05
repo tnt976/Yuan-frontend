@@ -1,4 +1,5 @@
 <template>
+  123
   <router-link to="/" v-slot="{ href, navigate, isActive }">
   <li :class="{ 'active': isActive }">
     <a :href="href" @click="navigate">
