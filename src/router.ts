@@ -14,6 +14,11 @@ const router = createRouter({
         path: '/design',
         name: 'design',
         component: () => import('./components/Designal.vue')
+      },
+      {
+        path: '/new',
+        name: 'new',
+        component: () => import('./components/New.vue')
       }
     ]
   })
