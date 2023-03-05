@@ -55,6 +55,7 @@
   
 </template>
 
+<<<<<<< HEAD
 <script >
   import {
     defineComponent,
@@ -204,6 +205,11 @@
       width: 100%;
       table-layout: fixed;
       border-collapse: collapse;
+=======
+<script setup lang='ts'>
+  import { ref, reactive } from 'vue'
+  import { ElMessage } from 'element-plus'
+>>>>>>> 291862bfacc2da43e05ae60b3fbe38e0e420d8f0
 
       td.table-cell {
         display: table-cell;
@@ -234,9 +240,22 @@
     display: flex;
     align-items: center;
 
+<<<<<<< HEAD
     :deep(.el-divider--horizontal) {
       margin: 0;
     }
   }
   
 </style>
+=======
+  const submitForm = () => {
+    vFormRef.value.getFormData().then(formData => {
+      // Form Validation OK
+      alert( JSON.stringify(formData) )
+    }).catch(error => {
+      // Form Validation failed
+      ElMessage.error(error)
+    })
+  }
+</script>
+>>>>>>> 291862bfacc2da43e05ae60b3fbe38e0e420d8f0
